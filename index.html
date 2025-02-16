@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .criteria {
+            margin-top: 10px;
+            text-align: left;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Password Strength Checker</h2>
+
+    <form method="POST">
+        <input type="password" name="password" placeholder="Enter password" required>
+        <br>
+        <button type="submit">Check Strength</button>
+    </form>
+
+    {% if result %}
+        <p class="result" style="color: {{ color }};">Strength: {{ result }}</p>
+        <div class="criteria">
+            {% for key, value in criteria.items() %}
+                <p>{{ key }}: {{ value }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>
